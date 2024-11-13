@@ -5,17 +5,129 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --clr-light: #f1f5f9;
+  --clr-skin: #fdba74; /*orange300*/
+  --clr-red: #e13a1d;
+  --clr-green: #025a4e; /*green600*/  
+  --clr-darkneon: #14b8a6;
+  
 }
-
+/*
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #fdba74;
+    --foreground: #171717;
   }
 }
-
+*/
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+/* Removes all styling for button so i can make new button later */
+button {
+  display: inline-block;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+}
+/*Button styling.
+order of direction for padding, etc.. is clockwise from top.
+*/
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  background-color: var(--clr-green);
+  color: var(--clr-light);
+  padding: 0.5em 0.7em;
+  border-radius: 7px;
+  width: 8rem;
+  height: 3rem;
+  box-shadow: 0px 4px 5px #233831,
+              0px 2px 4px #233831;
+  transition: transform 0.3s, box-shadow 0.2s, color 0.2s, background-color 0.2s ease;
+}
+.btn:hover {
+  transform: translateY(-5px);
+  background-color: #dedede;
+  color: var(--clr-darkneon);
+  box-shadow: 0px 4px 5px #9c9898,
+              0px 0px 4px #9c9898;
+}
+
+.btn.red {
+  background-color: var(--clr-red);
+  box-shadow: 0px 4px 5px #4d0d0d,
+              0px 2px 4px #640a0a;
+}
+
+.btn.red:hover {
+  transform: translateY(-5px);
+  background-color: #dedede;
+  color: var(--clr-red);
+  box-shadow: 0px 4px 5px #9c9898,
+              0px 0px 4px #9c9898;
+}
+/* vw is percentage based across entire screen width. so now the width adjusts to different screen sizes
+  it seems like for fullscreen, has 1080px
+  split it into 10 by 10 grid
+
+  coulda also done grid-auto-col/row if we want more flexibility
+*/
+.container {
+  display: grid;
+  grid-template-columns: 10vw 10vw 10vw 10vw 10vw 10vw 10vw 10vw 10vw 10vw; 
+  grid-template-rows: 108px 108px 108px 108px 108px 108px 108px 108px 108px 108px;
+  
+}
+
+.item {
+  padding: 0.5em;
+  background-color: #ffffff;
+  font-weight: 700;
+  border: 5px solid var(--clr-skin);
+}
+/* 
+grid-area: row start / col start / row end / col end;
+count from 0, the number will represent which cell it reaches.
+for display, if the width = height and full screen -> same 16/9 aspect ratio for videos.
+*/
+.display {
+  grid-area: 2 / 1 / 9 / 8;
+}
+.header {
+  grid-area: 1 / 1 / 1/ 11;
+}
+
+.sidebar {
+  grid-area: 2 / 8 / 9 / 11;
+}
+
+.bottombar {
+  grid-area: 9 / 1 / 11 / 11;
+  text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btncontainer {
+  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+section {
+  margin: 1rem;
 }
