@@ -6,7 +6,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --clr-light: #f1f5f9;
-  --clr-skin: #fdba74; /*orange300*/
+  --clr-border: #ffd3a4; /*orange300*/
   --clr-red: #e13a1d;
   --clr-green: #025a4e; /*green600*/  
   --clr-darkneon: #14b8a6;
@@ -21,9 +21,10 @@
 }
 */
 body {
+  
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans);
   height: 100%;
   overflow-y: hidden;
 }
@@ -44,7 +45,7 @@ order of direction for padding, etc.. is clockwise from top.
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: 600;
+  font-weight: 400;
   background-color: var(--clr-green);
   color: var(--clr-light);
   padding: 0.5em 0.7em;
@@ -88,12 +89,15 @@ order of direction for padding, etc.. is clockwise from top.
   grid-template-rows: 108px 108px 108px 108px 108px 108px 108px 108px 108px 108px;
   
 }
-
+strong {
+  font-size: 2rem;
+  font-weight: 400rem;
+}
 .item {
   padding: 0.5em;
   background-color: #ffffff;
   font-weight: 700;
-  border: 5px solid var(--clr-skin);
+  border: 5px solid var(--clr-border);
 }
 /* 
 grid-area: row start / col start / row end / col end;
@@ -105,20 +109,55 @@ for display, if the width = height and full screen -> same 16/9 aspect ratio for
 }
 .header {
   grid-area: 1 / 1 / 1/ 11;
+  font-size: 2.2rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h3 {
+  margin: 1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 .sidebar {
-  grid-area: 2 / 8 / 9 / 11;
+  grid-area: 2 / 8 / 11 / 11;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.classification {
+    width: 32rem;
+    height: auto;
+    line-height: 1.5;
+    font-size: 1.3rem;
+    font-weight: 300;
+    background-color: #f6f3ef;
+    padding: 2rem 2rem 2rem 2rem;
+    border-radius: 13px;
+}
+
+.classify {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+.classification.recycle {
+  background-color: #72cbff;
 }
 
 .bottombar {
-  grid-area: 9 / 1 / 11 / 11;
+  grid-area: 9 / 1 / 11 / 8;
   text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 400;
 }
 
 .btncontainer {
